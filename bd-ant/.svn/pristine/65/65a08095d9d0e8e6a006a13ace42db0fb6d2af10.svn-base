@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>bd-ant-parent</artifactId>
+        <groupId>net.niuniubao</groupId>
+        <version>0.5.4-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ant-amac</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.niuniubao</groupId>
+            <artifactId>ant-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.niuniubao</groupId>
+            <artifactId>ant-extension</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <classifier>jdk15</classifier>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.24</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.9.10</version>
+        </dependency>
+        <dependency>
+            <groupId>net.niuniubao</groupId>
+            <artifactId>ant-samples</artifactId>
+            <version>0.5.4-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>net.niuniubao</groupId>
+            <artifactId>ant-mybaits</artifactId>
+            <version>0.5.4-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.niuniubao.ant.samples.mapper.SimuWangManagerObjMapper">
+
+	<resultMap id="SimuWangManager" type="net.niuniubao.ant.samples.model.vo.SimuWangManagerObj">
+        <result property="managerId" column="manager_id"/>
+        <result property="htmlId" column="html_id"/>
+        <result property="managerName" column="manager_name"/>
+        <result property="company" column="company"/>
+        <result property="duty" column="duty"/>
+        <result property="workYears" column="work_years"/>
+        <result property="productQuantity" column="product_quantity"/>
+        <result property="education" column="education"/>
+        <result property="careerBackground" column="career_background"/>
+        <result property="strategy" column="strategy"/>
+        <result property="totalAverageProfit" column="total_average_profit"/>
+        <result property="currentAverageProfit" column="current_average_profit"/>
+        <result property="intro" column="intro"/>
+        <result property="presentation" column="presentation"/>
+	</resultMap>
+	
+	<sql id="SimuWangManagerColumns">
+	    <![CDATA[
+		manager_id,html_id,manager_name,company,duty,work_years,product_quantity,education,career_background,strategy,total_average_profit,current_average_profit,intro,presentation
+	    ]]>
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="managerId">
+    <![CDATA[
+        INSERT INTO simu_wang_manager (
+        	manager_id ,
+        	html_id ,
+        	manager_name ,
+        	company ,
+        	duty ,
+        	work_years ,
+        	product_quantity ,
+        	education ,
+        	career_background ,
+        	strategy ,
+        	total_average_profit ,
+        	current_average_profit ,
+        	intro ,
+        	presentation 
+        ) VALUES (
+        	#{managerId} ,
+        	#{htmlId} ,
+        	#{managerName} ,
+        	#{company} ,
+        	#{duty} ,
+        	#{workYears} ,
+        	#{productQuantity} ,
+        	#{education} ,
+        	#{careerBackground} ,
+        	#{strategy} ,
+        	#{totalAverageProfit} ,
+        	#{currentAverageProfit} ,
+        	#{intro} ,
+        	#{presentation} 
+        )
+    ]]>
+	</insert>
+
+</mapper>
+

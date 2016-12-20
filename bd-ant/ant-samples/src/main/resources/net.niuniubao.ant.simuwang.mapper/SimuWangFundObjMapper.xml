@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.niuniubao.ant.samples.mapper.SimuWangFundObjMapper">
+
+	<resultMap id="SimuWangFund" type="net.niuniubao.ant.samples.model.vo.SimuWangFundObj">
+        <result property="id" column="simu_wang_fund_id"/>
+        <result property="htmlId" column="html_id"/>
+        <result property="fundName" column="fund_name"/>
+        <result property="recordCode" column="record_code"/>
+        <result property="stutas" column="stutas"/>
+        <result property="showLogo" column="show_logo"/>
+        <result property="currentProfit" column="current_profit"/>
+        <result property="totalProfit" column="total_profit"/>
+        <result property="lastestPerValue" column="lastest_per_value"/>
+        <result property="totalPerValue" column="total_per_value"/>
+        <result property="company" column="company"/>
+        <result property="lockUpPeriod" column="lock_up_period"/>
+        <result property="openDay" column="open_day"/>
+        <result property="subscriptionStartPoint" column="subscription_start_point"/>
+        <result property="plusStartPoint" column="plus_start_point"/>
+        <result property="subscriptionRate" column="subscription_rate"/>
+        <result property="redemptionRate" column="redemption_rate"/>
+        <result property="precautiousLine" column="precautious_line"/>
+        <result property="stopLine" column="stop_line"/>
+        <result property="investmentAdviser" column="investment_adviser"/>
+        <result property="fundManagement" column="fund_management"/>
+        <result property="managementFeeRate" column="management_fee_rate"/>
+        <result property="custodian" column="custodian"/>
+        <result property="brokerageHouse" column="brokerage_house"/>
+        <result property="futuresBroker" column="futures_broker"/>
+        <result property="createDate" column="create_date"/>
+        <result property="initialSize" column="initial_size"/>
+        <result property="durationOfInverse" column="duration_of_inverse"/>
+        <result property="isgraded" column="isgraded"/>
+        <result property="ifUmbellateFund" column="if_umbellate_fund"/>
+        <result property="productType" column="product_type"/>
+        <result property="investmentStrategy" column="investment_strategy"/>
+        <result property="subInvestment" column="sub_investment"/>
+	</resultMap>
+	
+	<sql id="SimuWangFundColumns">
+	    <![CDATA[
+		simu_wang_fund_id,html_id,fund_name,record_code,stutas,show_logo,current_profit,total_profit,lastest_per_value,total_per_value,company,lock_up_period,open_day,subscription_start_point,plus_start_point,subscription_rate,redemption_rate,precautious_line,stop_line,investment_adviser,fund_management,management_fee_rate,custodian,brokerage_house,futures_broker,create_date,initial_size,duration_of_inverse,isgraded,if_umbellate_fund,product_type,investment_strategy,sub_investment
+	    ]]>
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO simu_wang_fund (
+        	simu_wang_fund_id ,
+        	html_id ,
+        	fund_name ,
+        	record_code ,
+        	stutas ,
+        	show_logo ,
+        	current_profit ,
+        	total_profit ,
+        	lastest_per_value ,
+        	total_per_value ,
+        	company ,
+        	lock_up_period ,
+        	open_day ,
+        	subscription_start_point ,
+        	plus_start_point ,
+        	subscription_rate ,
+        	redemption_rate ,
+        	precautious_line ,
+        	stop_line ,
+        	investment_adviser ,
+        	fund_management ,
+        	management_fee_rate ,
+        	custodian ,
+        	brokerage_house ,
+        	futures_broker ,
+        	create_date ,
+        	initial_size ,
+        	duration_of_inverse ,
+        	isgraded ,
+        	if_umbellate_fund ,
+        	product_type ,
+        	investment_strategy ,
+        	sub_investment 
+        ) VALUES (
+        	#{id} ,
+        	#{htmlId} ,
+        	#{fundName} ,
+        	#{recordCode} ,
+        	#{stutas} ,
+        	#{showLogo} ,
+        	#{currentProfit} ,
+        	#{totalProfit} ,
+        	#{lastestPerValue} ,
+        	#{totalPerValue} ,
+        	#{company} ,
+        	#{lockUpPeriod} ,
+        	#{openDay} ,
+        	#{subscriptionStartPoint} ,
+        	#{plusStartPoint} ,
+        	#{subscriptionRate} ,
+        	#{redemptionRate} ,
+        	#{precautiousLine} ,
+        	#{stopLine} ,
+        	#{investmentAdviser} ,
+        	#{fundManagement} ,
+        	#{managementFeeRate} ,
+        	#{custodian} ,
+        	#{brokerageHouse} ,
+        	#{futuresBroker} ,
+        	#{createDate} ,
+        	#{initialSize} ,
+        	#{durationOfInverse} ,
+        	#{isgraded} ,
+        	#{ifUmbellateFund} ,
+        	#{productType} ,
+        	#{investmentStrategy} ,
+        	#{subInvestment} 
+        )
+    ]]>
+	</insert>
+    
+
+</mapper>
+

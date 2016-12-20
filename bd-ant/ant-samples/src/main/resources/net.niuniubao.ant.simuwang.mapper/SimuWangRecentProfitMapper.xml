@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.niuniubao.ant.samples.mapper.SimuWangRecentProfitMapper">
+
+	<resultMap id="SimuWangRecentProfit" type="net.niuniubao.ant.samples.model.vo.SimuWangRecentProfit">
+        <result property="recentProfitId" column="recent_profit_id"/>
+        <result property="htmlId" column="html_id"/>
+        <result property="period" column="period"/>
+        <result property="profit" column="profit"/>
+        <result property="average" column="average"/>
+	</resultMap>
+	
+	<sql id="SimuWangRecentProfitColumns">
+	    <![CDATA[
+		recent_profit_id,html_id,period,profit,average
+	    ]]>
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="recentProfitId">
+    <![CDATA[
+        INSERT INTO simu_wang_recent_profit (
+        	recent_profit_id ,
+        	html_id ,
+        	period ,
+        	profit ,
+        	average 
+        ) VALUES (
+        	#{recentProfitId} ,
+        	#{htmlId} ,
+        	#{period} ,
+        	#{profit} ,
+        	#{average} 
+        )
+    ]]>
+	</insert>
+</mapper>
+

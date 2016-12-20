@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.niuniubao.ant.samples.mapper.SimuWangCompanyObjMapper">
+
+    <resultMap id="SimuWangCompanyObj" type="net.niuniubao.ant.samples.model.vo.SimuWangCompanyObj">
+        <result property="id" column="simu_company_id"/>
+        <result property="htmlId" column="html_id"/>
+        <result property="companyName" column="company_name"/>
+        <result property="coreLeader" column="core_leader"/>
+        <result property="date" column="date"/>
+        <result property="registeredNumber" column="registered_number"/>
+        <result property="fundNumber" column="fund_number"/>
+        <result property="address" column="address"/>
+        <result property="totalAverageProfit" column="total_average_profit"/>
+        <result property="currentAverageProfit" column="current_average_profit"/>
+        <result property="presentation" column="presentation"/>
+        <result property="strategy" column="strategy"/>
+        <result property="fundManager" column="fund_manager"/>
+        <result property="repProduct" column="rep_product"/>
+    </resultMap>
+
+    <sql id="SimuWangCompanyColumns">
+        <![CDATA[
+		simu_company_id,html_id,company_name,core_leader,date,registered_number,fund_number,address,total_average_profit,current_average_profit,presentation,strategy,fund_manager
+	    ]]>
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO simu_wang_company (
+        	simu_company_id ,
+        	html_id ,
+        	company_name ,
+        	core_leader ,
+        	date ,
+        	registered_number ,
+        	fund_number ,
+        	address ,
+        	total_average_profit ,
+        	current_average_profit ,
+        	presentation ,
+        	strategy ,
+        	fund_manager,
+        	rep_product
+        ) VALUES (
+        	#{id} ,
+        	#{htmlId} ,
+        	#{companyName} ,
+        	#{coreLeader} ,
+        	#{date} ,
+        	#{registeredNumber} ,
+        	#{fundNumber} ,
+        	#{address} ,
+        	#{totalAverageProfit} ,
+        	#{currentAverageProfit} ,
+        	#{presentation} ,
+        	#{strategy} ,
+        	#{fundManager}
+        	#{repProduct}
+        )
+    ]]>
+    </insert>
+
+</mapper>
+

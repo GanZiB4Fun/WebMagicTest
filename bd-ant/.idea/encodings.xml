@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-amac" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-eastmoney" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-extension" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-hbase" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-mybaits" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-samples" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-saxon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-scripts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-selenium" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-simuquan" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ant-simuwang" charset="UTF-8" />
+  </component>
+</project>

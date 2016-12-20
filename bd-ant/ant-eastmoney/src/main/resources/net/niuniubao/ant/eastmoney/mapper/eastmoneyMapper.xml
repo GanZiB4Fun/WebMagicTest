@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.niuniubao.ant.eastmoney.mapper.Mapper">
+
+    <insert id="insertManagerList" useGeneratedKeys="true" keyProperty="managerListId">
+        <![CDATA[
+        INSERT INTO eastmoney_manager_list (
+        	manager_list_id ,
+        	manager_url_id ,
+        	manager_name ,
+        	company_url_id ,
+        	company_name ,
+        	fund_url_id ,
+        	fund_name ,
+        	work_days ,
+        	current_best_return ,
+        	best_return_fund ,
+        	total_fund_assets ,
+        	best_return ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{managerListId} ,
+        	#{managerUrlId} ,
+        	#{managerName} ,
+        	#{companyUrlId} ,
+        	#{companyName} ,
+        	#{fundUrlId} ,
+        	#{fundName} ,
+        	#{workDays} ,
+        	#{currentBestReturn} ,
+        	#{bestReturnFund} ,
+        	#{totalFundAssets} ,
+        	#{bestReturn} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+	<insert id="insertCompanyList" useGeneratedKeys="true" keyProperty="companyListId">
+		<![CDATA[
+        INSERT INTO eastmoney_company_list (
+        	company_list_id ,
+        	company_url_id ,
+        	company_name ,
+        	register_date ,
+        	fund_sum ,
+        	header_name ,
+        	company_short_name_en ,
+        	unknown ,
+        	management_size ,
+        	hai_tong_piont ,
+        	company_short_name ,
+        	unknown_number ,
+        	end_date ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{companyListId} ,
+        	#{companyUrlId} ,
+        	#{companyName} ,
+        	#{registerDate} ,
+        	#{fundSum} ,
+        	#{headerName} ,
+        	#{companyShortNameEn} ,
+        	#{unknown} ,
+        	#{managementSize} ,
+        	#{haiTongPiont} ,
+        	#{companyShortName} ,
+        	#{unknownNumber} ,
+        	#{endDate} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertFundList" useGeneratedKeys="true" keyProperty="fundListId">
+		  <![CDATA[
+        INSERT INTO eastmoney_fund_list_kf (
+        	fund_list_id ,
+        	fund_url_id ,
+        	fund_name ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{fundListId} ,
+        	#{fundUrlId} ,
+        	#{fundName} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    	]]>
+	</insert>
+
+	<update id="updateCompanyListStatus">
+		UPDATE eastmoney_company_list SET proc_status=#{0} WHERE company_list_id=#{1}
+	</update>
+
+	<resultMap id="companyListMap" type="net.niuniubao.ant.eastmoney.model.CompanyJsonData">
+		<result property="companyListId" column="company_list_id"/>
+		<result property="companyUrlId" column="company_url_id"/>
+		<result property="dataVersion" column="data_version"/>
+	</resultMap>
+
+	<select id="selectCompanyIdNotProc" resultMap="companyListMap">
+		SELECT company_list_id,company_url_id,data_version FROM eastmoney_company_list WHERE proc_status=#{procStatus}  ORDER BY company_list_id  LIMIT 20
+	</select>
+
+	<insert id="insertCompanyJbgk" useGeneratedKeys="true" keyProperty="companyJbgkId">
+		<![CDATA[
+        INSERT INTO eastmoney_company_jbgk (
+        	company_jbgk_id ,
+        	company_name_zh ,
+        	company_name_en ,
+        	company_property ,
+        	register_date ,
+        	registered_capital ,
+        	legal_representative ,
+        	general_manager ,
+        	registered_address ,
+        	biz_address ,
+        	web_site ,
+        	post_code ,
+        	email ,
+        	phone_num ,
+        	fax_num ,
+        	biz_scope ,
+        	hai_tong_print ,
+        	totalfund_num ,
+        	general_fund_num ,
+        	monetary_fund_num ,
+        	financial_fund_num ,
+        	close_fund_num ,
+        	other_fund_num ,
+        	management_size ,
+        	fund_manager_num,
+        	company_url_id
+        ) VALUES (
+        	#{companyJbgkId} ,
+        	#{companyNameZh} ,
+        	#{companyNameEn} ,
+        	#{companyProperty} ,
+        	#{registerDate} ,
+        	#{registeredCapital} ,
+        	#{legalRepresentative} ,
+        	#{generalManager} ,
+        	#{registeredAddress} ,
+        	#{bizAddress} ,
+        	#{webSite} ,
+        	#{postCode} ,
+        	#{email} ,
+        	#{phoneNum} ,
+        	#{faxNum} ,
+        	#{bizScope} ,
+        	#{haiTongPrint} ,
+        	#{totalfundNum} ,
+        	#{generalFundNum} ,
+        	#{monetaryFundNum} ,
+        	#{financialFundNum} ,
+        	#{closeFundNum} ,
+        	#{otherFundNum} ,
+        	#{managementSize} ,
+        	#{fundManagerNum},
+        	#{companyUrlId}
+        )
+    ]]>
+	</insert>
+
+
+	<update id="updateFundListStatus">
+		UPDATE eastmoney_fund_list_kf SET proc_status=#{0} WHERE fund_list_id=#{1}
+	</update>
+
+	<resultMap id="fundListMap" type="net.niuniubao.ant.eastmoney.model.FundListJsonData">
+		<result property="fundListId" column="fund_list_id"/>
+		<result property="fundUrlId" column="fund_url_id"/>
+		<result property="dataVersion" column="data_version"/>
+	</resultMap>
+
+	<select id="selectFundIdNotProc" resultMap="fundListMap">
+		SELECT fund_list_id,fund_url_id,data_version FROM eastmoney_fund_list_kf WHERE proc_status=#{procStatus}  ORDER BY fund_list_id  LIMIT 20
+	</select>
+
+	<insert id="insertFundJbgk" useGeneratedKeys="true" keyProperty="fundJbgkId">
+		<![CDATA[
+        INSERT INTO eastmoney_fund_jbgk (
+        	fund_jbgk_id ,
+        	fund_name ,
+        	fund_short_name ,
+        	fund_code ,
+        	fund_type ,
+        	issue_date ,
+        	found_date_and_size ,
+        	property_scale ,
+        	share_size ,
+        	company_url_id,
+        	company ,
+        	bank ,
+        	fund_manager_url_id,
+        	fund_manager ,
+        	since_found_fh ,
+        	mangerment_rate ,
+        	managed_rate ,
+        	sales_service_rate ,
+        	subscription_rate ,
+        	purchase_rate ,
+        	redemption_rate ,
+        	compref ,
+        	track_target ,
+        	goal ,
+        	ideal ,
+        	scope ,
+        	strategy ,
+        	divided_policy ,
+        	risk_return_characteristic,
+        	fund_url_id
+        ) VALUES (
+        	#{fundJbgkId} ,
+        	#{fundName} ,
+        	#{fundShortName} ,
+        	#{fundCode} ,
+        	#{fundType} ,
+        	#{issueDate} ,
+        	#{foundDateAndSize} ,
+        	#{propertyScale} ,
+        	#{shareSize} ,
+        	#{companyUrlId} ,
+        	#{company} ,
+        	#{bank} ,
+        	#{fundManagerUrlId} ,
+        	#{fundManager} ,
+        	#{sinceFoundFh} ,
+        	#{mangermentRate} ,
+        	#{managedRate} ,
+        	#{salesServiceRate} ,
+        	#{subscriptionRate} ,
+        	#{purchaseRate} ,
+        	#{redemptionRate} ,
+        	#{compref} ,
+        	#{trackTarget} ,
+        	#{goal} ,
+        	#{ideal} ,
+        	#{scope} ,
+        	#{strategy} ,
+        	#{dividedPolicy} ,
+        	#{riskReturnCharacteristic},
+        	#{fundUrlId}
+        )
+    ]]>
+	</insert>
+
+	<update id="updateManagerListStatus">
+		UPDATE eastmoney_manager_list SET proc_status=#{0} WHERE manager_list_id=#{1}
+	</update>
+
+	<resultMap id="managerListMap" type="net.niuniubao.ant.eastmoney.model.ManagerJsonData">
+		<result property="managerListId" column="manager_list_id"/>
+		<result property="managerUrlId" column="manager_url_id"/>
+		<result property="dataVersion" column="data_version"/>
+	</resultMap>
+
+	<select id="selectManagerIdNotProc" resultMap="managerListMap">
+		SELECT manager_list_id,manager_url_id,data_version FROM eastmoney_manager_list WHERE proc_status=#{procStatus}  ORDER BY manager_list_id  LIMIT 20
+	</select>
+
+	<insert id="insertFundJz" useGeneratedKeys="true" keyProperty="jzId">
+		<![CDATA[
+        INSERT INTO eastmoney_jz (
+        	jz_id ,
+        	fund_url_id ,
+        	date ,
+        	unit_net ,
+        	accumulated_net ,
+        	daily_growth_rate ,
+        	purchase_status ,
+        	redemption_status ,
+        	feng_hong_song_pei
+        ) VALUES (
+        	#{jz_id} ,
+        	#{fund_url_id} ,
+        	#{date} ,
+        	#{unit_net} ,
+        	#{accumulated_net} ,
+        	#{daily_growth_rate} ,
+        	#{purchase_status} ,
+        	#{redemption_status} ,
+        	#{feng_hong_song_pei}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertManager" useGeneratedKeys="true" keyProperty="managerId">
+		<![CDATA[
+        INSERT INTO eastmoney_manager (
+        	manager_id ,
+        	manager_url_id ,
+        	manager_name ,
+        	work_days ,
+        	work_begin ,
+        	company ,
+        	current_scale ,
+        	best_profit ,
+        	introduction ,
+        	company_url_id
+        ) VALUES (
+        	#{managerId} ,
+        	#{managerUrlId} ,
+        	#{managerName} ,
+        	#{workDays} ,
+        	#{workBegin} ,
+        	#{company} ,
+        	#{currentScale} ,
+        	#{bestProfit} ,
+        	#{introduction} ,
+        	#{companyUrlId}
+        )
+    ]]>
+	</insert>
+
+	<!--仅用于补全FundJbgk数据-->
+	<resultMap id="eastmoneyFundJbgk" type="net.niuniubao.ant.eastmoney.model.FundJbgkObj">
+		<result property="fundJbgkId" column="fund_jbgk_id"/>
+		<result property="fundName" column="fund_name"/>
+		<result property="fundShortName" column="fund_short_name"/>
+		<result property="fundCode" column="fund_code"/>
+		<result property="fundType" column="fund_type"/>
+		<result property="issueDate" column="issue_date"/>
+		<result property="foundDateAndSize" column="found_date_and_size"/>
+		<result property="propertyScale" column="property_scale"/>
+		<result property="shareSize" column="share_size"/>
+		<result property="companyUrlId" column="company_url_id"/>
+		<result property="company" column="company"/>
+		<result property="bank" column="bank"/>
+		<result property="fundManagerUrlId" column="fund_manager_url_id"/>
+		<result property="fundManager" column="fund_manager"/>
+		<result property="sinceFoundFh" column="since_found_fh"/>
+		<result property="mangermentRate" column="mangerment_rate"/>
+		<result property="managedRate" column="managed_rate"/>
+		<result property="salesServiceRate" column="sales_service_rate"/>
+		<result property="subscriptionRate" column="subscription_rate"/>
+		<result property="purchaseRate" column="purchase_rate"/>
+		<result property="redemptionRate" column="redemption_rate"/>
+		<result property="compref" column="compref"/>
+		<result property="trackTarget" column="track_target"/>
+		<result property="goal" column="goal"/>
+		<result property="ideal" column="ideal"/>
+		<result property="scope" column="scope"/>
+		<result property="strategy" column="strategy"/>
+		<result property="dividedPolicy" column="divided_policy"/>
+		<result property="riskReturnCharacteristic" column="risk_return_characteristic"/>
+	</resultMap>
+
+	<select id="getFundJbgkById" resultMap="eastmoneyFundJbgk">
+		SELECT * FROM eastmoney_fund_jbgk
+	        WHERE fund_jbgk_id = #{id}
+
+	</select>
+
+	<update id="updateFundJbgk" >
+		<![CDATA[
+        UPDATE eastmoney_fund_jbgk SET
+	        fund_name = #{fundName} ,
+	        fund_short_name = #{fundShortName} ,
+	        fund_code = #{fundCode} ,
+	        fund_type = #{fundType} ,
+	        issue_date = #{issueDate} ,
+	        found_date_and_size = #{foundDateAndSize} ,
+	        property_scale = #{propertyScale} ,
+	        share_size = #{shareSize} ,
+	        company_url_id = #{companyUrlId} ,
+	        company = #{company} ,
+	        bank = #{bank} ,
+	        fund_manager_url_id = #{fundManagerUrlId} ,
+	        fund_manager = #{fundManager} ,
+	        since_found_fh = #{sinceFoundFh} ,
+	        mangerment_rate = #{mangermentRate} ,
+	        managed_rate = #{managedRate} ,
+	        sales_service_rate = #{salesServiceRate} ,
+	        subscription_rate = #{subscriptionRate} ,
+	        purchase_rate = #{purchaseRate} ,
+	        redemption_rate = #{redemptionRate} ,
+	        compref = #{compref} ,
+	        track_target = #{trackTarget} ,
+	        goal = #{goal} ,
+	        ideal = #{ideal} ,
+	        scope = #{scope} ,
+	        strategy = #{strategy} ,
+	        divided_policy = #{dividedPolicy} ,
+	        risk_return_characteristic = #{riskReturnCharacteristic}
+        WHERE
+	        fund_jbgk_id = #{fundJbgkId}
+    ]]>
+	</update>
+
+	<!--基金经理旗下基金-->
+	<insert id="insertManagerFund" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+        INSERT INTO eastmoney_manager_fund (
+        	manager_fund_id ,
+        	manager_url_id ,
+        	name ,
+        	value_field ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{managerFundId} ,
+        	#{managerUrlId} ,
+        	#{name} ,
+        	#{valueField} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+	</insert>
+
+</mapper>
+

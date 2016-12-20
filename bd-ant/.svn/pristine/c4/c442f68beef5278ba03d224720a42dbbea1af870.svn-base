@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.niuniubao.ant.simuquan.mapper.SimuquanMapper">
+
+
+	<insert id="insertCompanyList" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO simuquan_company_list (
+        	id ,
+        	company_id ,
+        	name ,
+        	logo ,
+        	fund_num ,
+        	major_fund_name ,
+        	major_manager_name ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{company_id} ,
+        	#{name} ,
+        	#{logo} ,
+        	#{fund_num} ,
+        	#{major_fund_name} ,
+        	#{major_manager_name} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+	<update id="updateCompanyListStatus">
+		UPDATE simuquan_company_list SET proc_status=#{0} WHERE company_id=#{1} AND data_version=#{2}
+	</update>
+
+	<resultMap id="companyListMap" type="net.niuniubao.ant.simuquan.model.CompanyList">
+		<result property="id" column="id"/>
+		<result property="company_id" column="company_id"/>
+		<result property="dataVersion" column="data_version"/>
+	</resultMap>
+
+	<insert id="insertFundList" useGeneratedKeys="true" keyProperty="simuquan_fund_list">
+		<![CDATA[
+        INSERT INTO simuquan_fund_list (
+        	simuquan_fund_list_id ,
+        	fund_id ,
+        	alias ,
+        	strategy ,
+        	status ,
+        	next_open_date ,
+        	jz_price ,
+        	jz_date ,
+        	company_name ,
+        	manager_name ,
+        	percent ,
+        	strategy_text ,
+        	percent_text ,
+        	tag_text ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{simuquan_fund_list_id} ,
+        	#{fund_id} ,
+        	#{alias} ,
+        	#{strategy} ,
+        	#{status} ,
+        	#{next_open_date} ,
+        	#{jz_price} ,
+        	#{jz_date} ,
+        	#{company_name} ,
+        	#{manager_name} ,
+        	#{percent} ,
+        	#{strategy_text} ,
+        	#{percent_text} ,
+        	#{tag_text} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<select id="selectCompanyIdNotProc" resultMap="companyListMap">
+		SELECT id,company_id,data_version FROM simuquan_company_list WHERE proc_status=#{procStatus}  ORDER BY company_id  LIMIT 20
+	</select>
+
+
+	<insert id="insertCompanyFilingList" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+        INSERT INTO simuquan_filing_list (
+        	id ,
+        	company_id ,
+        	filing_id ,
+        	cn_name ,
+        	fund_scale ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{company_id} ,
+        	#{filing_id} ,
+        	#{cn_name} ,
+        	#{fund_scale} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertCompanyInfo" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+        INSERT INTO simuquan_company_info (
+        	id ,
+        	company_id ,
+        	name ,
+        	logo ,
+        	city ,
+        	create_date ,
+        	scale ,
+        	company_contact_phone ,
+        	company_contact_memo ,
+        	message_text ,
+        	verified ,
+        	fund_num ,
+        	major_fund_id ,
+        	major_fund ,
+        	major_manager_id ,
+        	major_manager ,
+        	fund_scale_text ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{company_id} ,
+        	#{name} ,
+        	#{logo} ,
+        	#{city} ,
+        	#{create_date} ,
+        	#{scale} ,
+        	#{company_contact_phone} ,
+        	#{company_contact_memo} ,
+        	#{message_text} ,
+        	#{verified} ,
+        	#{fund_num} ,
+        	#{major_fund_id} ,
+        	#{major_fund} ,
+        	#{major_manager_id} ,
+        	#{major_manager} ,
+        	#{fund_scale_text} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertCompanyManagerList" useGeneratedKeys="true" keyProperty="managerListId">
+		<![CDATA[
+        INSERT INTO simuquan_company_manager_list (
+        	manager_list_id ,
+        	id ,
+        	company_id ,
+        	name ,
+        	avatar ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{manager_list_id} ,
+        	#{id} ,
+        	#{company_id} ,
+        	#{name} ,
+        	#{avatar} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertNewsList" useGeneratedKeys="true" keyProperty="newsListId">
+		<![CDATA[
+        INSERT INTO simuquan_news_list (
+        	news_list_id ,
+        	id ,
+        	title ,
+        	description ,
+        	source_from ,
+        	pubtime ,
+        	company_id ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{news_list_id} ,
+        	#{id} ,
+        	#{title} ,
+        	#{description} ,
+        	#{source_from} ,
+        	#{pubtime} ,
+        	#{company_id} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<resultMap id="filingListMap" type="net.niuniubao.ant.simuquan.model.FilingList">
+		<result property="id" column="id"/>
+		<result property="filing_id" column="filing_id"/>
+		<result property="dataVersion" column="data_version"/>
+	</resultMap>
+
+	<select id="selectFilingListIdNotProc" resultMap="filingListMap">
+		SELECT id,filing_id,data_version FROM simuquan_filing_list WHERE proc_status=#{procStatus}  ORDER BY filing_id  LIMIT 20
+	</select>
+
+	<update id="updateFilingListStatus">
+		UPDATE simuquan_filing_list SET proc_status=#{0} WHERE id=#{1} AND data_version=#{2}
+	</update>
+
+	<resultMap id="fundListMap" type="net.niuniubao.ant.simuquan.model.FundList">
+		<result property="simuquan_fund_list_id" column="simuquan_fund_list_id"/>
+		<result property="fund_id" column="fund_id"/>
+		<result property="data_version" column="data_version"/>
+		<result property="proc_status" column="proc_status"/>
+	</resultMap>
+
+	<select id="selectFundIdNotProc" resultMap="fundListMap">
+		SELECT simuquan_fund_list_id,fund_id,data_version FROM simuquan_fund_list WHERE proc_status=#{procStatus}  ORDER BY simuquan_fund_list_id  LIMIT 20
+	</select>
+
+	<update id="updateFundListStatus">
+		UPDATE simuquan_fund_list SET proc_status=#{0} WHERE fund_id=#{1} AND data_version=#{2}
+	</update>
+
+	<insert id="insertFundInfo" useGeneratedKeys="true" keyProperty="simuquan_fund_id">
+		<![CDATA[
+        INSERT INTO simuquan_fund_info (
+        	simuquan_fund_id ,
+        	fund_id ,
+        	name ,
+        	alias ,
+        	fund_number ,
+        	currency_type ,
+        	found_time ,
+        	reg_time ,
+        	fund_type ,
+        	strategy ,
+        	status ,
+        	manager_id ,
+        	manager_name ,
+        	company_id ,
+        	company_name ,
+        	issuer ,
+        	truster_name ,
+        	invest_field ,
+        	jz_price ,
+        	jz_date ,
+        	similar_rank ,
+        	next_open_date ,
+        	company_user_id ,
+        	company_contact_phone ,
+        	company_contact_memo ,
+        	open_day ,
+        	close_time ,
+        	pre_close_time ,
+        	buy_min ,
+        	buy_feilv ,
+        	manage_feilv ,
+        	fd_manage_feilv ,
+        	shuhui_feilv ,
+        	zj_buy_min ,
+        	shuhui_limit ,
+        	shuhui_time ,
+        	shuhui_zjdz ,
+        	similar_total ,
+        	similar_ranking ,
+        	strategy_text ,
+        	next_open_date_text ,
+        	this_year ,
+        	since_found ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{simuquan_fund_id} ,
+        	#{fund_id} ,
+        	#{name} ,
+        	#{alias} ,
+        	#{fund_number} ,
+        	#{currency_type} ,
+        	#{found_time} ,
+        	#{reg_time} ,
+        	#{fund_type} ,
+        	#{strategy} ,
+        	#{status} ,
+        	#{manager_id} ,
+        	#{manager_name} ,
+        	#{company_id} ,
+        	#{company_name} ,
+        	#{issuer} ,
+        	#{truster_name} ,
+        	#{invest_field} ,
+        	#{jz_price} ,
+        	#{jz_date} ,
+        	#{similar_rank} ,
+        	#{next_open_date} ,
+        	#{company_user_id} ,
+        	#{company_contact_phone} ,
+        	#{company_contact_memo} ,
+        	#{open_day} ,
+        	#{close_time} ,
+        	#{pre_close_time} ,
+        	#{buy_min} ,
+        	#{buy_feilv} ,
+        	#{manage_feilv} ,
+        	#{fd_manage_feilv} ,
+        	#{shuhui_feilv} ,
+        	#{zj_buy_min} ,
+        	#{shuhui_limit} ,
+        	#{shuhui_time} ,
+        	#{shuhui_zjdz} ,
+        	#{similar_total} ,
+        	#{similar_ranking} ,
+        	#{strategy_text} ,
+        	#{next_open_date_text} ,
+        	#{this_year} ,
+        	#{since_found} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertJzSummary" useGeneratedKeys="true" keyProperty="sumuquan_jz_summary_id">
+		<![CDATA[
+        INSERT INTO simuquan_jz_summary (
+        	simuquan_jz_summary_id ,
+        	fund_id ,
+        	text ,
+        	fund ,
+        	hs300 ,
+        	similar ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{simuquan_jz_summary_id} ,
+        	#{fund_id} ,
+        	#{text} ,
+        	#{fund} ,
+        	#{hs300} ,
+        	#{similar} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertJzWithdraw" useGeneratedKeys="true" keyProperty="withdraw_id">
+		<![CDATA[
+        INSERT INTO simuquan_jz_withdraw (
+        	withdraw_id ,
+        	fund_id ,
+        	text ,
+        	fund ,
+        	hs300 ,
+        	similar ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{withdraw_id} ,
+        	#{fund_id} ,
+        	#{text} ,
+        	#{fund} ,
+        	#{hs300} ,
+        	#{similar} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertFenhongInfo" useGeneratedKeys="true" keyProperty="fenhong_info_id">
+		<![CDATA[
+        INSERT INTO simuquan_fenhong_info (
+        	fenhong_info_id ,
+        	fund_id ,
+        	date_text ,
+        	value_text ,
+        	more ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{fenhong_info_id} ,
+        	#{fund_id} ,
+        	#{date_text} ,
+        	#{value_text} ,
+        	#{more} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertJzChart" useGeneratedKeys="true" keyProperty="simuquan_jz_chart_id">
+		<![CDATA[
+        INSERT INTO simuquan_jz_chart (
+        	simuquan_jz_chart_id ,
+        	fund_id ,
+        	date ,
+        	fund_percent ,
+        	hs300_percent ,
+        	similar_percent ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{simuquan_jz_chart_id} ,
+        	#{fund_id} ,
+        	#{date} ,
+        	#{fund_percent} ,
+        	#{hs300_percent} ,
+        	#{similar_percent} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertJzList" useGeneratedKeys="true" keyProperty="simuquan_jz_list_id">
+		<![CDATA[
+        INSERT INTO simuquan_jz_list (
+        	simuquan_jz_list_id ,
+        	date ,
+        	price ,
+        	sum_price ,
+        	p_change ,
+        	data_version ,
+        	proc_status ,
+        	fund_id
+        ) VALUES (
+        	#{simuquan_jz_list_id} ,
+        	#{date} ,
+        	#{price} ,
+        	#{sum_price} ,
+        	#{p_change} ,
+        	#{data_version} ,
+        	#{proc_status} ,
+        	#{fund_id}
+        )
+    ]]>
+	</insert>
+	<insert id="insertFenhongList" useGeneratedKeys="true" keyProperty="simuquan_fenhong_list_id">
+		<![CDATA[
+        INSERT INTO simuquan_fenhong_list (
+        	simuquan_fenhong_list_id ,
+        	date_text ,
+        	type_text ,
+        	value_text ,
+        	data_version ,
+        	proc_status ,
+        	fund_id
+        ) VALUES (
+        	#{simuquan_fenhong_list_id} ,
+        	#{date_text} ,
+        	#{type_text} ,
+        	#{value_text} ,
+        	#{data_version} ,
+        	#{proc_status} ,
+        	#{fund_id}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertFiling" useGeneratedKeys="true" keyProperty="filingId">
+		<![CDATA[
+        INSERT INTO simuquan_filing (
+			id,
+        	name_zh ,
+        	name_en ,
+        	reg_code ,
+        	reg_date ,
+        	org_code ,
+        	create_date ,
+        	reg_adress ,
+        	biz_adress ,
+        	registered_capital ,
+        	contributed_capital ,
+        	registered_capital_ratio ,
+        	company_type ,
+        	type ,
+        	fund_scale ,
+        	scale ,
+        	web_site ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{id},
+        	#{nameZh} ,
+        	#{nameEn} ,
+        	#{regCode} ,
+        	#{regDate} ,
+        	#{orgCode} ,
+        	#{createDate} ,
+        	#{regAdress} ,
+        	#{bizAdress} ,
+        	#{registeredCapital} ,
+        	#{contributedCapital} ,
+        	#{registeredCapitalRatio} ,
+        	#{companyType} ,
+        	#{type} ,
+        	#{fundScale} ,
+        	#{scale} ,
+        	#{webSite} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+	</insert>
+
+	<insert id="insertManagerList" useGeneratedKeys="true" keyProperty="managerListId">
+		<![CDATA[
+        INSERT INTO simuquan_manager_list (
+        	manager_list_id ,
+        	id ,
+        	name ,
+        	avatar ,
+        	company_name ,
+        	fund_num ,
+        	major_fund_name ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{manager_list_id} ,
+        	#{id} ,
+        	#{name} ,
+        	#{avatar} ,
+        	#{company_name} ,
+        	#{fund_num} ,
+        	#{major_fund_name} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+	<resultMap id="ManagerListMap" type="net.niuniubao.ant.simuquan.model.ManagerList">
+		<result property="manager_list_id" column="manager_list_id"/>
+		<result property="id" column="id"/>
+		<result property="data_version" column="data_version"/>
+		<result property="proc_status" column="proc_status"/>
+	</resultMap>
+
+	<select id="selectManagerIdNotProc" resultMap="ManagerListMap">
+		SELECT manager_list_id,id,data_version FROM simuquan_manager_list WHERE proc_status=#{procStatus}  ORDER BY manager_list_id  LIMIT 20
+	</select>
+
+	<update id="updateManagerListStatus">
+		UPDATE simuquan_manager_list SET proc_status=#{0} WHERE manager_list_id=#{1}
+	</update>
+
+	<insert id="insertManagerInfo" useGeneratedKeys="true" keyProperty="managerInfoId">
+		<![CDATA[
+        INSERT INTO simuquan_manager_info (
+        	manager_info_id ,
+        	id ,
+        	name ,
+        	avatar ,
+        	work_years ,
+        	resume_bg ,
+        	edu ,
+        	employ_date ,
+        	employ_org ,
+        	description ,
+        	company_id ,
+        	company_name ,
+        	fund_num ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{manager_info_id} ,
+        	#{id} ,
+        	#{name} ,
+        	#{avatar} ,
+        	#{work_years} ,
+        	#{resume_bg} ,
+        	#{edu} ,
+        	#{employ_date} ,
+        	#{employ_org} ,
+        	#{desc} ,
+        	#{company_id} ,
+        	#{company_name} ,
+        	#{fund_num} ,
+        	#{data_version} ,
+        	#{proc_status}
+        )
+    ]]>
+	</insert>
+
+</mapper>
+

@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.niuniubao.ant.amac.mapper.AmacMapper">
+    <insert id="insertCompany" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO amac_company (
+        	id ,
+        	company_id ,
+        	name_zh ,
+        	name_en ,
+        	registration_code ,
+        	organization_code ,
+        	bookin_time ,
+        	regtime ,
+        	registered_address ,
+        	biz_address ,
+        	registered_capital ,
+        	contributed_capital ,
+        	enterprise_property ,
+        	registered_capital_ratio ,
+        	type ,
+        	other_biz_type ,
+        	employee_no ,
+        	web_site ,
+        	legal_opinion ,
+        	legal_representative ,
+        	qualified ,
+        	entitled_to_way ,
+        	last_report_time ,
+        	special_info,
+        	data_version,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{companyId} ,
+        	#{nameZh} ,
+        	#{nameEn} ,
+        	#{registrationCode} ,
+        	#{organizationCode} ,
+        	#{bookinTime} ,
+        	#{regtime} ,
+        	#{registeredAddress} ,
+        	#{bizAddress} ,
+        	#{registeredCapital} ,
+        	#{contributedCapital} ,
+        	#{enterpriseProperty} ,
+        	#{registeredCapitalRatio} ,
+        	#{type} ,
+        	#{otherBizType} ,
+        	#{employeeNo} ,
+        	#{webSite} ,
+        	#{legalOpinion} ,
+        	#{legalRepresentative} ,
+        	#{qualified} ,
+        	#{entitledToWay} ,
+        	#{lastReportTime} ,
+        	#{specialInfo} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+    <insert id="insertCompanyJson" useGeneratedKeys="true" keyProperty="amacManagerMainId">
+        <![CDATA[
+        INSERT INTO amac_company_list (
+        	list_id ,
+        	id ,
+        	manager_name ,
+        	artificial_person_name ,
+        	register_no ,
+        	establish_date ,
+        	manager_has_product ,
+        	url ,
+        	register_date ,
+        	register_address ,
+        	register_province ,
+        	register_city ,
+        	reg_adr_agg ,
+        	fund_count ,
+        	fund_scale ,
+        	has_special_tips ,
+        	in_blacklist ,
+        	has_credit_tips ,
+        	reg_coordinate ,
+        	office_coordinate ,
+        	office_address ,
+        	office_province ,
+        	office_city ,
+        	primary_invest_type,
+        	data_version,
+        	proc_status
+        ) VALUES (
+        	#{listId} ,
+        	#{id} ,
+        	#{managerName} ,
+        	#{artificialPersonName} ,
+        	#{registerNo} ,
+        	#{establishDate} ,
+        	#{managerHasProduct} ,
+        	#{url} ,
+        	#{registerDate} ,
+        	#{registerAddress} ,
+        	#{registerProvince} ,
+        	#{registerCity} ,
+        	#{regAdrAgg} ,
+        	#{fundCount} ,
+        	#{fundScale} ,
+        	#{hasSpecialTips} ,
+        	#{inBlacklist} ,
+        	#{hasCreditTips} ,
+        	#{regCoordinate} ,
+        	#{officeCoordinate} ,
+        	#{officeAddress} ,
+        	#{officeProvince} ,
+        	#{officeCity} ,
+        	#{primaryInvestType},
+        	#{dataVersion},
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+    <!--插入高管数据-->
+    <insert id="insertExecutives" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO amac_executive (
+        	id ,
+        	company_id ,
+        	manager_name ,
+        	duty ,
+        	qualified,
+        	data_version,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{companyId} ,
+        	#{managerName} ,
+        	#{duty} ,
+        	#{qualified},
+        	#{dataVersion},
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+    <!--插入法人数据-->
+    <insert id="insertOwnerResume" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO amac_owner_resumes (
+        	id ,
+        	company_id ,
+        	period ,
+        	work_addr ,
+        	duty ,
+        	data_version,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{companyId} ,
+        	#{period} ,
+        	#{workAddr} ,
+        	#{duty},
+        	#{dataVersion},
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+    <!--插入基金简单信息-->
+    <insert id="insertFundList" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO amac_fund_list (
+        	id ,
+        	fund_id,
+        	fund_type ,
+        	fund_name ,
+        	fund_url ,
+        	company_id ,
+        	data_version,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{fundId},
+        	#{fundType} ,
+        	#{fundName} ,
+        	#{fundUrl} ,
+        	#{companyId} ,
+        	#{dataVersion},
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+    <!--插入任务处理信息-->
+    <insert id="insertAntTask" useGeneratedKeys="true" keyProperty="taskId">
+        <![CDATA[
+        INSERT INTO amac_ant_task (
+        	task_id ,
+        	task_html_id ,
+        	task_create_time ,
+        	task_finish_time ,
+        	task_status ,
+        	task_type
+        ) VALUES (
+        	#{taskId} ,
+        	#{taskHtmlId} ,
+        	#{taskCreateTime} ,
+        	#{taskFinishTime} ,
+        	#{taskStatus} ,
+        	#{taskType}
+        )
+    ]]>
+    </insert>
+
+    <!--插入基金信息-->
+    <insert id="insertAmacFund" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO amac_fund (
+        	id ,
+        	fund_id,
+        	fund_name ,
+        	fund_code ,
+        	date ,
+        	filing_time ,
+        	fund_moment ,
+        	fund_type ,
+        	currency ,
+        	manage_type ,
+        	trustee_ship ,
+        	trustee ,
+        	investment_field ,
+        	status ,
+        	last_report_time ,
+        	special_message ,
+        	fund_manager_url ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{id} ,
+        	#{fundId},
+        	#{fundName} ,
+        	#{fundCode} ,
+        	#{date} ,
+        	#{filingTime} ,
+        	#{fundMoment} ,
+        	#{fundType} ,
+        	#{currency} ,
+        	#{manageType} ,
+        	#{trusteeShip} ,
+        	#{trustee} ,
+        	#{investmentField} ,
+        	#{status} ,
+        	#{lastReportTime} ,
+        	#{specialMessage} ,
+        	#{fundManagerUrl}  ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+    </insert>
+
+    <select id="selectManagerHtmlId" resultType="java.lang.Long">
+        SELECT id FROM  amac_manager_main ORDER BY id;
+    </select>
+
+
+    <!--<select id="selectManagerHtmlIdNotProcess" resultType="java.lang.Long">-->
+        <!--SELECT id FROM  amac_manager_main WHERE id NOT IN (SELECT task_html_id FROM amac_ant_task)  ORDER BY id;-->
+    <!--</select>-->
+
+    <resultMap id="CompanyListMap" type="net.niuniubao.ant.amac.model.JsonCompanyData">
+        <result property="listId" column="list_id"/>
+        <result property="id" column="id"/>
+        <result property="dataVersion" column="data_version"/>
+        <result property="procStatus" column="proc_status"/>
+    </resultMap>
+
+    <select id="selectCompanyNotProc" resultMap="CompanyListMap">
+        SELECT list_id,id,data_version,proc_status FROM amac_company_list WHERE proc_status=#{procStatus}  ORDER BY id  LIMIT 50
+    </select>
+
+    <resultMap id="AmacFundList" type="net.niuniubao.ant.amac.model.FundList">
+        <result property="id" column="id"/>
+        <result property="fundName" column="fund_name"/>
+        <result property="fundUrl" column="fund_url"/>
+        <result property="companyId" column="company_id"/>
+        <result property="fundId" column="fund_id"/>
+        <result property="dataVersion" column="data_version"/>
+        <result property="procStatus" column="proc_status"/>
+    </resultMap>
+
+    <select id="selectFundNotProcess" resultMap="AmacFundList">
+        SELECT  *  FROM amac_fund_list WHERE proc_status = #{status} ORDER BY fund_id LIMIT 50;
+    </select>
+
+    <update id="updateFundList" >
+        <![CDATA[
+        UPDATE amac_fund_list SET
+	        proc_status = 1
+        WHERE
+	        fund_id = #{id}
+    ]]>
+    </update>
+
+    <update id="updateCompanyList" >
+        <![CDATA[
+        UPDATE amac_company_list SET
+	        proc_status = 1
+        WHERE
+	        id = #{id}
+    ]]>
+    </update>
+
+	<insert id="insertFundManagerList" useGeneratedKeys="true" keyProperty="amacListId">
+		<![CDATA[
+        INSERT INTO amac_fund_manager_list (
+        	amac_list_id ,
+        	aoi_name ,
+        	aoi_id ,
+        	pr_count_person ,
+        	pti0person ,
+        	pti1person ,
+        	pti2person ,
+        	pti3person ,
+        	pti4person ,
+        	pti6person ,
+        	pti7person ,
+        	pti8person ,
+        	pti9person ,
+        	pti10person ,
+        	data_version ,
+        	proc_status
+        ) VALUES (
+        	#{amacListId} ,
+        	#{AOI_NAME},
+        	#{AOI_ID},
+        	#{PR_COUNT_PERSON} ,
+        	#{PTI0PERSON} ,
+        	#{PTI1PERSON} ,
+        	#{PTI2PERSON} ,
+        	#{PTI3PERSON} ,
+        	#{PTI4PERSON} ,
+        	#{PTI6PERSON} ,
+        	#{PTI7PERSON} ,
+        	#{PTI8PERSON} ,
+        	#{PTI9PERSON} ,
+        	#{PTI10PERSON} ,
+        	#{dataVersion} ,
+        	#{procStatus}
+        )
+    ]]>
+	</insert>
+
+	<resultMap id="AmacFundManagerList" type="net.niuniubao.ant.amac.model.AmacFundManagerList">
+		<result property="amacListId" column="amac_list_id"/>
+		<result property="dataVersion" column="data_version"/>
+		<result property="procStatus" column="proc_status"/>
+	</resultMap>
+
+	<select id="selectFundManagerNotProcess" resultMap="AmacFundManagerList">
+		SELECT  *  FROM amac_fund_manager_list WHERE proc_status = #{status} ORDER BY amac_list_id LIMIT 50;
+	</select>
+
+	<update id="updateFundManagerListStatus" >
+		<![CDATA[
+        UPDATE amac_fund_manager_list SET
+	        proc_status = 1
+        WHERE
+	        amac_list_id = #{id}
+    ]]>
+	</update>
+
+	<insert id="insertFundManager" useGeneratedKeys="true" keyProperty="amacFundManagerId">
+		<![CDATA[
+        INSERT INTO amac_fund_manager (
+        	amac_fund_manager_id ,
+			rpi_id ,
+        	rpi_name ,
+        	sco_name ,
+        	eco_name ,
+        	aoi_name ,
+        	pti_name ,
+        	cti_name ,
+        	cer_num ,
+        	ppp_get_date ,
+        	ppp_end_date ,
+        	countcer ,
+        	countcx ,
+        	data_version ,
+        	proc_status ,
+        	html_id
+        ) VALUES (
+        	#{amacFundManagerId} ,
+        	#{RPI_ID},
+        	#{RPI_NAME},
+        	#{SCO_NAME},
+        	#{ECO_NAME},
+        	#{AOI_NAME},
+        	#{PTI_NAME},
+        	#{CTI_NAME},
+        	#{CER_NUM},
+        	#{PPP_GET_DATE},
+        	#{PPP_END_DATE},
+        	#{COUNTCER},
+        	#{COUNTCX},
+        	#{dataVersion} ,
+        	#{procStatus} ,
+        	#{htmlId}
+        )
+    ]]>
+	</insert>
+
+
+</mapper>

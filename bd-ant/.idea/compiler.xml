@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ant-amac" />
+        <module name="ant-core" />
+        <module name="ant-eastmoney" />
+        <module name="ant-extension" />
+        <module name="ant-hbase" />
+        <module name="ant-mybaits" />
+        <module name="ant-samples" />
+        <module name="ant-saxon" />
+        <module name="ant-scripts" />
+        <module name="ant-selenium" />
+        <module name="ant-simuquan" />
+        <module name="ant-simuwang" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="ant-amac" target="1.6" />
+      <module name="ant-core" target="1.6" />
+      <module name="ant-eastmoney" target="1.6" />
+      <module name="ant-extension" target="1.6" />
+      <module name="ant-hbase" target="1.7" />
+      <module name="ant-mybaits" target="1.6" />
+      <module name="ant-samples" target="1.6" />
+      <module name="ant-saxon" target="1.6" />
+      <module name="ant-scripts" target="1.6" />
+      <module name="ant-selenium" target="1.6" />
+      <module name="ant-simuquan" target="1.6" />
+      <module name="ant-simuwang" target="1.6" />
+      <module name="bd-ant-parent" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="net.niuniubao.ant.samples.mapper.SimuWangFundNavHisMapper">
+
+    <resultMap id="SimuWangFundNavHis" type="net.niuniubao.ant.samples.model.vo.SimuWangFundNavHis">
+        <result property="navHisId" column="nav_his_id"/>
+        <result property="htmlId" column="html_id"/>
+        <result property="priceDate" column="price_date"/>
+        <result property="nav" column="nav"/>
+        <result property="cumulativeNavWithdrawal" column="cumulative_nav_withdrawal"/>
+        <result property="cumulativeNav" column="cumulative_nav"/>
+        <result property="priceChange" column="price_change"/>
+        <result property="initUnitValue" column="init_unit_value"/>
+    </resultMap>
+
+    <sql id="SimuWangFundNavHisColumns">
+        <![CDATA[
+		nav_his_id,html_id,price_date,nav,cumulative_nav_withdrawal,cumulative_nav,price_change,init_unit_value
+	    ]]>
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="navHisId">
+        <![CDATA[
+        INSERT INTO simu_wang_fund_nav_his (
+        	nav_his_id ,
+        	html_id ,
+        	price_date ,
+        	nav ,
+        	cumulative_nav_withdrawal ,
+        	cumulative_nav ,
+        	price_change ,
+        	init_unit_value
+        ) VALUES (
+        	#{navHisId} ,
+        	#{htmlId} ,
+        	#{priceDate} ,
+        	#{nav} ,
+        	#{cumulativeNavWithdrawal} ,
+        	#{cumulativeNav} ,
+        	#{priceChange} ,
+        	#{initUnitValue}
+        )
+    ]]>
+    </insert>
+
+
+</mapper>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ant-amac/ant-amac.iml" filepath="$PROJECT_DIR$/ant-amac/ant-amac.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-core/ant-core.iml" filepath="$PROJECT_DIR$/ant-core/ant-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-eastmoney/ant-eastmoney.iml" filepath="$PROJECT_DIR$/ant-eastmoney/ant-eastmoney.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-extension/ant-extension.iml" filepath="$PROJECT_DIR$/ant-extension/ant-extension.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-hbase/ant-hbase.iml" filepath="$PROJECT_DIR$/ant-hbase/ant-hbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-mybaits/ant-mybaits.iml" filepath="$PROJECT_DIR$/ant-mybaits/ant-mybaits.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-samples/ant-samples.iml" filepath="$PROJECT_DIR$/ant-samples/ant-samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-saxon/ant-saxon.iml" filepath="$PROJECT_DIR$/ant-saxon/ant-saxon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-scripts/ant-scripts.iml" filepath="$PROJECT_DIR$/ant-scripts/ant-scripts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-selenium/ant-selenium.iml" filepath="$PROJECT_DIR$/ant-selenium/ant-selenium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-simuquan/ant-simuquan.iml" filepath="$PROJECT_DIR$/ant-simuquan/ant-simuquan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ant-simuwang/ant-simuwang.iml" filepath="$PROJECT_DIR$/ant-simuwang/ant-simuwang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bd-ant-parent.iml" filepath="$PROJECT_DIR$/bd-ant-parent.iml" />
+    </modules>
+  </component>
+</project>
